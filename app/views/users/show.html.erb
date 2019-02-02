@@ -1,0 +1,7 @@
+<% if @user.admin %>
+  <h1>ADMIN</h1>
+<% end %>
+
+ <h1><%= @user.name %></h1>
+Booked Flights
+ <%= @user.flight %><br>

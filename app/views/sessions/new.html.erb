@@ -1,0 +1,18 @@
+<h1>Rocket Airlines </h1>
+<h2>Log In</h2>
+
+  <%= form_for @user, :url => url_for(:controller => 'sessions', :action => 'create')  do |f| %>
+
+    <%= f.label :name %>
+    <%= f.collection_select :name, @users, :name, :name%>
+
+    <%= f.label :password, "password:" %>
+    <%= f.password_field :password %>
+
+    <%= f.submit 'Sign In'%>
+
+  <% end %>
+
+<br>
+
+<h4><%=link_to 'Create an Account', new_user_path %></h4>
