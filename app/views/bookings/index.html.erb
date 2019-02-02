@@ -1,13 +1,14 @@
-<div class="container" role="main">
-  <div>
-     <div style="height: 60px;margin:auto">
-      <img src="https://images.pexels.com/photos/46148/aircraft-jet-landing-cloud-46148.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260">
-        <% @bookings.each do |booking| %>
-          <%= booking.flight_id %>
-          <label><%= link_to booking.flight_id, booking_path(booking) %></label>
-          <% end %>
 
-     </div>
-    <h1 align="center">Rocket Airlines</h1>
-  </div>
-</div>
+<h3>Booked Flights</h3>
+<% @bookings.each do |booking| %>
+  <label><%= link_to booking.flight.name, booking_path(booking) %></label>
+<% end %>
+
+<br></br>
+
+<h3>Book a New Flight </h3>
+<%= form_for(@booking) do |f| %>
+  Flight Number
+<%= f.text_field :flight %><br>
+<%= f.submit %>
+<% end %>
