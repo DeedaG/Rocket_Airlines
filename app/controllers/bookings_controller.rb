@@ -11,7 +11,9 @@ class BookingsController < ApplicationController
 
   def create
     #raise params.inspect
-    @booking = Booking.new(booking_params)
+    @user = User.find(params[:user_id])
+    @booking = @user.bookings.build(booking_params)
+
     @booking.flight_id = params[:booking][:flight_id]
     redirect_to booking_url(@booking)
   end

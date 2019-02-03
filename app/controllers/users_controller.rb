@@ -1,9 +1,6 @@
 class UsersController < ApplicationController
 
-  def index
-    @users = User.all
-  end
-
+  
   def new
     @user = User.new
   end
@@ -14,8 +11,8 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
 
        redirect_to user_path(@user)
-    #else
-      #redirect_to '/signup'
+    else
+      redirect_to '/signup'
     end
   end
 

@@ -1,10 +1,10 @@
 <h1>Rocket Airlines </h1>
 <h2>Log In</h2>
 
-  <%= form_for @user, :url => url_for(:controller => 'sessions', :action => 'create')  do |f| %>
+  <%= form_for @user do |f| %>
 
     <%= f.label :name %>
-    <%= f.collection_select :name, @users, :name, :name%>
+    <%= f.text_field :name %>
 
     <%= f.label :password, "password:" %>
     <%= f.password_field :password %>
