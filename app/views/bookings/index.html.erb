@@ -1,16 +1,6 @@
+  <h2>Booked Flights<% @bookings.each do |booking| %></h2>
+  <h3> by: <%= link_to booking.user.name, user_path(booking.user_id) %></h3>
+  <p>Description: <%= booking.description %></p><br>
+  <% end %>
 
-<h3>Booked Flights</h3>
-<% @bookings.each do |booking| %>
-  <label><%= link_to booking.flight.name, booking_path(booking) %></label>
-<% end %>
-
-<br></br>
-
-<h3>Book a New Flight </h3>
-<%= form_for(@booking) do |f| %>
-  Flight Number
-<%= f.text_field :flight %><br>
-<%= f.submit %>
-<% end %>
-
-<h2><%= link_to "Browse Flights", flights_path %><h2>
+<h3><%= link_to "Log Out", '/sessions/destroy' %></h3>

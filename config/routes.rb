@@ -1,11 +1,15 @@
 Rails.application.routes.draw do
 
-  root 'bookings#welcome'
+  root 'flights#welcome'
 
   get '/signup', to: 'users#new'
     get '/signin', to: 'sessions#new'
     get '/sessions/destroy' => 'sessions#destroy'
     post '/signin' => 'sessions#create'
+
+    resources :users do
+      resources :bookings
+    end
 
   resources :users
   resources :bookings

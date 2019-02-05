@@ -1,0 +1,33 @@
+<h2>Available Flights</h2>
+
+<% if !current_user.admin %>
+
+    <% @flights.each do |flight| %>
+    <%= link_to "Go to #{flight.destination}", flight_path(flight) %><br>
+    <% end %>
+
+
+<br></br>
+
+<% else %>
+
+  <% @flights.each do |flight| %>
+  Destination: <%= flight.destination %><br>
+  <% end %>
+  <br></br>
+
+  <h2>Create a New Flight</h2>
+  <%= form_for(@flight) do |f| %>
+
+  <%= f.label :name %>
+  <%= f.text_field :name %><br>
+
+  <%= f.label :destination %>
+  <%= f.text_field :destination %><br>
+
+  <%= f.submit %>
+  <% end %><br>
+
+<% end %>
+
+<h3><%= link_to "Log Out", '/sessions/destroy' %></h3>

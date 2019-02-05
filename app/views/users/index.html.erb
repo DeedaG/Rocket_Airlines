@@ -1,0 +1,8 @@
+<h1>All Users</h1>
+<%@users.each do |user|%>
+  <br>
+  <h4>Name: <%=user.name %><h4>
+
+  <%end%>
+
+<h4><%= link_to "Log Out", '/sessions/destroy' %></h4>

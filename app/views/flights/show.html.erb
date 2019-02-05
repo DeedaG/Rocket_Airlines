@@ -1,0 +1,7 @@
+<h2> Flight Information</h2>
+Flight Number: <%= @flight.name %><br>
+Destination: <%= @flight.destination %><br>
+Rate (per person):<br>
+Number of Passengers on flight: <%= @flight.users.count %><br></br>
+
+<%= link_to "Book this Flight", new_booking_path(@flight.users) %>

@@ -1,3 +1,4 @@
+require 'pry'
 class ApplicationController < ActionController::Base
 
   def authentication_required

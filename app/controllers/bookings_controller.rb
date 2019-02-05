@@ -1,25 +1,31 @@
+require 'pry'
 class BookingsController < ApplicationController
 
   def index
-    @booking = Booking.new
     @bookings = Booking.all
   end
 
-  def show
-    @booking = Booking.find(params[:id])
+  def new
+    @booking = Booking.new(params[:id])
   end
 
   def create
-    #raise params.inspect
-    @user = User.find(params[:user_id])
-    @booking = @user.bookings.build(booking_params)
+    @booking = Booking.new(booking_params)
+    binding.pry
+    if @booking.save
+      redirect_to users_path(@booking.user_id)
+    else
+      render 'new'
+    end
+  end
 
-    @booking.flight_id = params[:booking][:flight_id]
-    redirect_to booking_url(@booking)
+  def show
+    #binding.pry
+    @booking = Booking.find_by(flight_id: params[:flight_id], user_id: params[:user_id])
   end
 
   private
   def booking_params
-    params.require(:booking).permit(:flight_id)
+    params.require(:booking).permit(:user_id, :description, :flight_id)
   end
 end
