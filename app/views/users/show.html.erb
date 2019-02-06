@@ -1,6 +1,6 @@
 <% if @user.admin %>
   <h1>ADMIN</h1>
-<% end %>
+<% else %>
 
 <h1><%= @user.name %>'s Booked Flights</h1>
 
@@ -9,8 +9,9 @@
     <%= link_to flight.destination, flight_path(flight) %><br>
   <% end %><br>
 
-
+<% end %>
 
  <br></br>
 
  <%= link_to "See All Flights", flights_path %><br>
+<h4><%= link_to "Log Out", '/sessions/destroy' %></h4>

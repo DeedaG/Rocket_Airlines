@@ -1,10 +1,11 @@
-<%= form_for @booking do |f| %>
+<%= form_for [current_user, @booking] do |f| %>
 
   <%= f.label "Description" %>
   <%= f.text_area :description %>
 
   <%= f.collection_select :flight, Flight.all, :id, :name %>
-  <%= f.collection_select :user, User.all, :id, :name %>
+
+
 
   <%= f.submit %>
 <% end %>
