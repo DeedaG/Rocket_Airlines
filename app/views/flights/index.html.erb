@@ -6,8 +6,9 @@
     <%= link_to "Go to #{flight.destination}", flight_path(flight) %><br>
     <% end %>
 
-
-<br></br>
+  <br></br>
+  <h3><%= link_to "See Bookings", bookings_path %></h3>
+  <br></br>
 
 <% else %>
 
@@ -27,6 +28,7 @@
 
   <%= f.submit %>
   <% end %><br>
+
 
 <% end %>
 

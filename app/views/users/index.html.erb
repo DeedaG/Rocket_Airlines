@@ -1,4 +1,4 @@
-<% if @user.admin %>
+<% if current_user.admin %>
   <h1> ADMIN </h1>
 
 <h1> All Users</h1>
@@ -8,7 +8,7 @@
   <% end %>
 
 <% else %>
-  <%= link_to "See All Flights", flights_path %><br>
+  <h1><%= link_to "See All Flights", flights_path %><br></h1>
 <% end %>
 
 
