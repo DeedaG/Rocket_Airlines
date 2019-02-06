@@ -2,13 +2,12 @@
   <h1>ADMIN</h1>
 <% end %>
 
+<h1><%= @user.name %>'s Booked Flights</h1>
 
-<h1><%= @user.name %>'s Booked Flights</h1><br>
-
-  <% @user.flights.map do |flight| %>
-
-    <%= flight.destination %>
-  <% end %>
+  <% @user.flights.each do |flight| %>
+    <%= flight.name %>
+    <%= link_to flight.destination, flight_path(flight) %><br>
+  <% end %><br>
 
 
 

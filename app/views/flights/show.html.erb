@@ -2,6 +2,11 @@
 Flight Number: <%= @flight.name %><br>
 Destination: <%= @flight.destination %><br>
 Rate (per person):<br>
-Number of Passengers on flight: <%= @flight.users.count %><br></br>
+Passengers Booked on this flight: <%= @flight.users.count %><br></br>
 
-<%= link_to "Book this Flight", new_booking_path(@flight.users) %>
+<% if @flight.users.count > 20 %>
+  <h1><%= "This flight is FULL!" %>"</h1>
+
+<% else %>
+  <%= link_to "Book this Flight", new_booking_path(@flight.users) %>
+<% end %>

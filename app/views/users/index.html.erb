@@ -1,8 +1,15 @@
-<h1>All Users</h1>
-<%@users.each do |user|%>
-  <br>
-  <h4>Name: <%=user.name %><h4>
+<% if @user.admin %>
+  <h1> ADMIN </h1>
 
-  <%end%>
+<h1> All Users</h1>
+  <% @users.each do |user|%>
+    <br>
+    <h4>Name: <%= user.name %><h4>
+  <% end %>
+
+<% else %>
+  <%= link_to "See All Flights", flights_path %><br>
+<% end %>
+
 
 <h4><%= link_to "Log Out", '/sessions/destroy' %></h4>
