@@ -2,12 +2,20 @@
   <h1>ADMIN</h1>
 <% else %>
 
-<h1><%= @user.name %>'s Booked Flights</h1>
+<h1><%= @user.name %>'s Booked Flights </h1>
 
   <% @user.flights.each do |flight| %>
-    <%= flight.name %>
-    <%= link_to flight.destination, flight_path(flight) %><br>
+    <% flight.bookings.each do |b| %>
+      <% if b.paid == 0 %>
+        <%= "***PAYMENT REQUIRED***"%>
+      <% end %>
+    <% end %><br>
+
+    <%= flight.name %><br>
+    <%= link_to flight.destination, flight_path(flight) %><br></br>
+
   <% end %><br>
+
 
 <% end %>
 

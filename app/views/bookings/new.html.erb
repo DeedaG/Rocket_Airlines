@@ -3,6 +3,9 @@
   <%= f.label "Description" %>
   <%= f.text_area :description %>
 
+  <%= f.label "Paid?"%>
+  <%= f.check_box :paid %>
+
   <%= f.collection_select :flight, Flight.all, :id, :name %>
 
 

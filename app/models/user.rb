@@ -4,6 +4,4 @@ class User < ApplicationRecord
   has_many :flights, through: :bookings
 
   validates :name, :presence => true
-
-  #scope :paid, -> {where(paid: true)}
 end
