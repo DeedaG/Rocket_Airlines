@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_07_014356) do
+ActiveRecord::Schema.define(version: 2019_02_07_235551) do
 
   create_table "bookings", force: :cascade do |t|
     t.integer "flight_id"
@@ -32,6 +32,9 @@ ActiveRecord::Schema.define(version: 2019_02_07_014356) do
     t.string "name"
     t.string "password_digest"
     t.string "admin"
+    t.string "email"
+    t.string "image"
+    t.string "uid"
   end
 
 end
