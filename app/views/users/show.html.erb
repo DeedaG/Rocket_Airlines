@@ -3,19 +3,25 @@
 <% else %>
 
 <h1><%= @user.name %>'s Booked Flights </h1>
+<h2>Email: <%= @user.email %></h2>
+<h2>Facebook UID: <%= @user.uid %></h2>
+<img src="<%= @user.image %>">
+
+<br></br>
 
   <% @user.flights.each do |flight| %>
-    <% flight.bookings.each do |b| %>
+
+  <%= flight.name %><br>
+  <%= link_to flight.destination, flight_path(flight) %><br>
+
+    Notes:<% flight.bookings.each do |b| %>
+
       <% if b.paid == 0 %>
         <%= "***PAYMENT REQUIRED***"%>
       <% end %>
-    <% end %><br>
-
-    <%= flight.name %><br>
-    <%= link_to flight.destination, flight_path(flight) %><br></br>
-
+      <%= b.description %>
+    <% end %><br></br>
   <% end %><br>
-
 
 <% end %>
 
@@ -23,12 +29,4 @@
 
  <%= link_to "See All Flights", flights_path %><br>
 <h4><%= link_to "Log Out", '/sessions/destroy' %></h4>
-
-<% if session[:user_id] %>
-  <h1><%= @user.name %></h1>
-  <h2>Email: <%= @user.email %></h2>
-  <h2>Facebook UID: <%= @user.uid %></h2>
-  <img src="<%= @user.image %>">
-<% else %>
   <%= link_to('Log in with Facebook!', '/auth/facebook') %>
-<% end %>

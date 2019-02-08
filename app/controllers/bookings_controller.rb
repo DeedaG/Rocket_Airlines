@@ -17,7 +17,7 @@ class BookingsController < ApplicationController
   def create
     @user = current_user
     #raise params.inspect
-    @booking = Booking.create(description: params[:description], paid: params[:booking][:paid], flight_id: params[:booking][:flight], user_id: params[:user_id])
+    @booking = Booking.create(description: params[:booking][:description], paid: params[:booking][:paid], flight_id: params[:booking][:flight], user_id: params[:user_id])
     #raise params.inspect
     #binding.pry
     if @booking.save
