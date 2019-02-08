@@ -1,13 +1,3 @@
 <h1>Update a Flight</h1>
 
-<%= form_for @flight do |f|%>
-
-<%= f.label :name %>
-<%= f.text_field :name %>
-
-<%= f.label :destination %>
-<%= f.text_field :destination %>
-
-    <%= f.submit 'Update Flight'%>
-
-<% end %>
+<%= render 'form' %>
