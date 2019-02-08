@@ -12,8 +12,13 @@
 <% else %>
 
   <% @flights.each do |flight| %>
-  Destination: <%= flight.destination %><br>
+  Name <%= flight.name %><br>
+  Destination: <%= flight.destination %>
+  <h4><%= link_to "Edit Flight #{flight.name}", edit_flight_path(flight) %></h4>
   <% end %>
+
+
+
   <br></br>
 
   <h2>Create a New Flight</h2>
