@@ -1,7 +1,8 @@
   <h2>Booked Flights<% @bookings.each do |booking| %></h2>
-  <h3> by: <%= link_to booking.user.name, user_path(booking.user_id) %></h3>
-  <p>Description: <%= booking.description %></p><br>
-  <% end %>
+  Passenger: <%= link_to booking.user.name, user_path(booking.user_id) %>
+  Flight: <%= booking.flight.name %><br>
+  <%= link_to "Booking Details", user_booking_path(booking, booking.user_id)%>
+  <% end %><br></br>
 
 <h3><%= link_to "See All Flights", flights_path %></h3>
 <h3><%= link_to "Log Out", '/sessions/destroy' %></h3>

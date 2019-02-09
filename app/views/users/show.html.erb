@@ -27,6 +27,7 @@
 
  <br></br>
 
+<%= link_to "Booking Details", user_booking_path(@user.id)%><br>
  <%= link_to "See All Flights", flights_path %><br>
 <h4><%= link_to "Log Out", '/sessions/destroy' %></h4>
   <%= link_to('Log in with Facebook!', '/auth/facebook') %>

@@ -8,8 +8,8 @@ Rails.application.routes.draw do
     get '/sessions/destroy' => 'sessions#destroy'
     post '/signin' => 'sessions#create'
 
-    resources :users do
-      resources :bookings
+    resources :users, only: [:show] do
+      resources :bookings, only: [:show, :index]
     end
 
   resources :users

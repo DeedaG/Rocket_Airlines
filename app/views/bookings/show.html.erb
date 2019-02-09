@@ -1,1 +1,13 @@
+<h3><%= @booking.user.name %>'s Booking Details</h3><br>
+Flight number: <%= @booking.flight.name %><br>
+Destination: <%= @booking.flight.destination %><br>
+Itinerary: <%= @booking.description %><br>
+Date Booked: <%= @booking.created_at %><br>
+Balance: <% if @booking.paid == 1 %>
+  <%= "Paid"%>
+  <% else %>
+  <%= "payment due" %>
+  <% end %><br></br>
 
+  <%= link_to "See All Flights", flights_path %><br>
+  <h4><%= link_to "Log Out", '/sessions/destroy' %></h4>
