@@ -18,7 +18,7 @@ class SessionsController < ApplicationController
       redirect_to user_path(user)
     else
       user = User.find_by(name: params[:user][:name])
-      helpers.sign_in_with_password
+      helpers.sign_in_with_password(user)
       redirect_to user_path(user)
     end
   end

@@ -20,8 +20,8 @@ module SessionsHelper
     end
   end
 
-  def sign_in_with_password
-    if user && user.authenticate(params[:user][:password]) && user.provider.nil?
+  def sign_in_with_password(user)
+    if user && user.authenticate(params[:user][:password])
       session[:user_id] = user.id
       user.save
     else
