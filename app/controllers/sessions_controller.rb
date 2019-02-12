@@ -6,22 +6,39 @@ class SessionsController < ApplicationController
   end
 
   def create
-    auth = request.env["omniauth.auth"]
+      auth = request.env["omniauth.auth"]
     if auth
-      user = User.find_or_create_by(uid: auth['uid']) do |u|
-          u.name = auth['info']['name']
-          u.email = auth['info']['email']
-          u.image = auth['info']['image']
-        end
-      helpers.sign_in_with_auth(auth)
-      user.save
-      redirect_to user_path(user)
+      @user = User.sign_in_with_auth(auth)
+      session[:user_id] = @user.id
+      @user.save
+      redirect_to user_path(@user)
     else
-      user = User.find_by(name: params[:user][:name])
-      helpers.sign_in_with_password(user)
-      redirect_to user_path(user)
+      @user = User.sign_in_with_password
+      session[:user_id] = @user.id
+      redirect_to user_path(@user)
     end
   end
+
+    #   @user = User.find_or_create_by(uid: auth['uid']) do |u|
+    #       u.name = auth['info']['name']
+    #       u.email = auth['info']['email']
+    #       u.image = auth['info']['image']
+    #     end
+    #   if @user
+    #     session[:user_id] = @user.id
+    #     @user.save
+    #     redirect_to user_path(@user)
+    #   else
+    #     helpers.sign_in_with_auth(auth)
+    #     redirect_to user_path(@user)
+    #   end
+    # else
+    #   @user = (User.find_by(name: params[:user][:name]))
+    #   helpers.sign_in_with_password(@user)
+    #   #raise params.inspect
+    #   redirect_to user_path(@user)
+    # end
+  #end
 
   def destroy
     reset_session

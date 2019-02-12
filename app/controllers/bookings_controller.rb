@@ -13,19 +13,12 @@ class BookingsController < ApplicationController
     @booking = Booking.new(params[:id])
   end
 
-
   def create
     @user = current_user
-    #raise params.inspect
-    @booking = Booking.create(description: params[:booking][:description], paid: params[:booking][:paid], flight_id: params[:booking][:flight], user_id: params[:user_id])
-    #raise params.inspect
-    #binding.pry
-    if @booking.save
+    @booking = Booking.create(booking_params, @booking.user = current_user)
     @user.bookings << @booking
       redirect_to user_path(@booking.user_id)
-    else
-      render 'new'
-    end
+    
   end
 
   def show
@@ -33,5 +26,9 @@ class BookingsController < ApplicationController
     @booking = Booking.find(params[:id])
   end
 
+  private
+  def booking_params
+    params.require(:booking).permit(:description, :paid)
+  end
 
 end

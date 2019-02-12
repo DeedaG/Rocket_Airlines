@@ -1,6 +1,6 @@
 <h2>All Flights</h2>
 
-<% if !current_user.admin %>
+<% if current_user.admin == 0 %>
 
     <% @flights.each do |flight| %>
     <%= link_to "Go to #{flight.destination}", flight_path(flight) %><br>
@@ -9,14 +9,15 @@
     <h4><%= link_to "Booked Flights", user_path(current_user)%></h4>
   <br></br>
 
-<% else %>
+<% end %>
+
+<% if current_user.admin == 1 %>
 
   <% @flights.each do |flight| %>
   Name <%= flight.name %><br>
   Destination: <%= flight.destination %>
   <h4><%= link_to "Edit Flight #{flight.name}", edit_flight_path(flight) %></h4>
   <% end %>
-
 
   <br></br>
 
