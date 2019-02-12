@@ -5,19 +5,24 @@ class SessionsController < ApplicationController
     @users = User.all
   end
 
-  def create
-      auth = request.env["omniauth.auth"]
-    if auth
-      @user = User.sign_in_with_auth(auth)
-      session[:user_id] = @user.id
-      @user.save
-      redirect_to user_path(@user)
-    else
-      @user = User.sign_in_with_password
-      session[:user_id] = @user.id
-      redirect_to user_path(@user)
-    end
-  end
+  # def create
+  #     auth = request.env["omniauth.auth"]
+  #   if auth
+  #     @user = User.sign_in_with_auth(auth)
+  #     session[:user_id] = @user.id
+  #     @user.save
+  #     redirect_to user_path(@user)
+  #   else
+  #     @user = User.find_by(name: params[:user][:name])
+  #     if @user && @user.authenticate(params[:user][:password])
+  #       session[:user_id] = @user.id
+  #       @user.save
+  #       redirect_to user_path(@user)
+  #     else
+  #       "Invalid Login"
+  #     end
+  #   end
+  # end
 
     #   @user = User.find_or_create_by(uid: auth['uid']) do |u|
     #       u.name = auth['info']['name']
@@ -39,6 +44,26 @@ class SessionsController < ApplicationController
     #   redirect_to user_path(@user)
     # end
   #end
+
+  def create
+    @user = User.new
+    @users = User.all
+
+    if auth = request.env["omniauth.auth"]
+      @user = User.find_or_create_by_omniauth(auth)
+      session[:user_id] = @user.id
+      redirect_to flights_path
+    else
+      user = User.find_or_create_by(:email => params[:email])
+      if user && user.authenticate(params[:password])
+        session[:user_id] = user.id
+        redirect_to user_path(user)
+      else
+        render :new
+      end
+    end
+  end
+
 
   def destroy
     reset_session

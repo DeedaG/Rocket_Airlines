@@ -21,7 +21,7 @@ class UsersController < ApplicationController
       else
         render :new
       end
-      
+
     else
       redirect_to '/signup'
     end
@@ -38,7 +38,7 @@ class UsersController < ApplicationController
 
    private
   def user_params
-    params.require(:user).permit(:name, :password, :admin)
+    params.require(:user).permit(:name, :password_digest, :password, :admin)
   end
 
 end
