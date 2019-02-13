@@ -3,13 +3,10 @@
 
   <%= form_for @user, url: '/signin' do |f| %>
 
-    <%= f.label :name, "name:" %>
-    <%= f.text_field :name %>
+    <%= f.label :email %>
+    <%= f.email_field :email %>
 
-    <%= f.label :email, "email:" %>
-    <%= f.password_field :email %>
-
-    <%= f.label :password, "password:" %>
+    <%= f.label :password %>
     <%= f.password_field :password %>
 
     <%= f.submit 'Log In'%>

@@ -1,8 +1,8 @@
-<% if @user.admin == 1 %>
-  <h1>ADMIN</h1>
+<% if @user.admin = 1 %>
+  <h1>**ADMIN***</h1>
 <% else %>
 
-<h1><%= @user.name %>'s Booked Flights </h1>
+<h2><%= @user.name %>'s Booked Flights </h2>
 <h2>Email: <%= @user.email %></h2>
 
 <br></br>

@@ -5,8 +5,10 @@ Passengers Booked on this flight: <%= @flight.users.count %><br></br>
 
 <% if @flight.users.count > 20 %>
   <h1><%= "This flight is FULL!" %>"</h1>
-
 <% else %>
-  <%= link_to "Book this Flight", new_flight_booking_path(@flight.id) %><br>
+
   <%= link_to "See All Flights", flights_path %><br>
+  <% if current_user.admin = 0 %>
+    <%= link_to "Book this Flight", new_flight_booking_path(@flight.id) %><br>
+  <% end %>
 <% end %>
