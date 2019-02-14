@@ -1,17 +1,21 @@
+<%= render 'navbar' %>
+
 <h2>All Flights</h2>
 
-<% if current_user.admin = 0 %>
+<% if !current_user.admin = 1 %>
 
     <% @flights.each do |flight| %>
     <%= link_to "Go to #{flight.destination}", flight_path(flight) %><br>
     <% end %><br>
 
     <h4><%= link_to "Booked Flights", user_path(current_user)%></h4>
+
   <br></br>
 
 <% end %>
 
 <% if current_user.admin = 1 %>
+  <h1>**ADMIN***</h1>
 
   <% @flights.each do |flight| %>
   Name <%= flight.name %><br>
@@ -25,9 +29,7 @@
   <%= render 'form' %>
   <br>
 
-  <h3><%= link_to "See Bookings", bookings_path %></h3>
+  <h3><%= link_to "See All Bookings", bookings_path %></h3>
   <br></br>
 
 <% end %>
-
-<h3><%= link_to "Log Out", '/sessions/destroy' %></h3>
