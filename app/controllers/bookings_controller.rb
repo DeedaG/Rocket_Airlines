@@ -15,7 +15,7 @@ class BookingsController < ApplicationController
 
   def create
     @user = current_user
-    @booking = Booking.create(booking_params, @booking.user = current_user)
+    @booking = Booking.create(booking_params)
     @user.bookings << @booking
       redirect_to user_path(@booking.user_id)
 
