@@ -1,5 +1,5 @@
 class FlightsController < ApplicationController
-
+  
   def index
     @flights = Flight.all
     @flight = Flight.new
@@ -15,7 +15,7 @@ class FlightsController < ApplicationController
      if @flight.save
        redirect_to flights_path(@flight)
      else
-       redirect_to "/"
+       redirect_to root_path
      end
    end
 
