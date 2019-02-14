@@ -23,7 +23,7 @@ class BookingsController < ApplicationController
 
   def show
     #binding.pry
-    @booking = Booking.find(params[:id])
+    @booking = Booking.find_by(params[:id])
   end
 
   private

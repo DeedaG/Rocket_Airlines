@@ -5,6 +5,3 @@
   Flight: <%= booking.flight.name %><br>
   <%= link_to "Booking Details", user_booking_path(booking, booking.user_id)%>
   <% end %><br></br>
-
-<h3><%= link_to "See All Flights", flights_path %></h3>
-<h3><%= link_to "Log Out", '/sessions/destroy' %></h3>
