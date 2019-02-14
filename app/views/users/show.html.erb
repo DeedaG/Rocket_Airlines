@@ -10,7 +10,7 @@
 
 <br></br>
 
-  <% @user.flights.each do |flight| %>
+<% @user.flights.each do |flight| %>
 
   <%= flight.name %><br>
   <%= link_to flight.destination, flight_path(flight) %><br>
@@ -23,7 +23,4 @@
       <%= b.description %>
     <% end %><br></br>
   <% end %><br>
-
 <% end %>
-
- <br></br>

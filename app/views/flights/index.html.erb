@@ -2,7 +2,7 @@
 
 <h2>All Flights</h2>
 
-<% if !current_user.admin == "1" %>
+<% if current_user.admin == "0" %>
 
     <% @flights.each do |flight| %>
     <%= link_to "Go to #{flight.destination}", flight_path(flight) %><br>

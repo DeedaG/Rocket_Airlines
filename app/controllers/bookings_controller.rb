@@ -14,11 +14,11 @@ class BookingsController < ApplicationController
   end
 
   def create
-    @user = current_user
-    @booking = Booking.create(booking_params)
-    @user.bookings << @booking
-      redirect_to user_path(@booking.user_id)
-
+    @flight = Flight.find(params[:booking][:flight])
+    @booking = @flight.bookings.create(booking_params.merge(user_id: current_user.id))
+     #binding.pry
+    #@user.bookings << @booking
+    redirect_to user_path(@booking.user_id)
   end
 
   def show
@@ -28,7 +28,7 @@ class BookingsController < ApplicationController
 
   private
   def booking_params
-    params.require(:booking).permit(:description, :paid)
+    params.require(:booking).permit(:description, :paid, :user_id, :flight_id)
   end
 
 end
