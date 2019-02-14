@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
-  root 'flights#welcome'
+  #root 'flights#welcome'
+  root 'static#about'
+
   get '/auth/facebook/callback' => 'sessions#create'
 
   get '/signup', to: 'users#new'
