@@ -32,7 +32,7 @@ class UsersController < ApplicationController
       @user = User.find(params[:id])
       #@user.flights << Flight.find(flight_id)
     else
-      redirect_to root_path
+      redirect_to 'about'
     end
   end
 
