@@ -17,7 +17,7 @@
 
     Notes:<% flight.bookings.each do |b| %>
 
-      <% if b.paid == 0 %>
+      <% if b.paid == "0" %>
         <%= "***PAYMENT REQUIRED***"%>
       <% end %>
       <%= b.description %>
