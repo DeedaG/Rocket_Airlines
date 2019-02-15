@@ -1,12 +1,13 @@
 <%= render 'navbar' %>
 
+<h3>User Profile</h3>
 <% if current_user.admin == "1" %>
 
   <h1>**ADMIN***</h1>
 <% else %>
 
 <h2><%= @user.name %>'s Booked Flights </h2>
-<h2>Email: <%= @user.email %></h2>
+<h4>Email: <%= @user.email %></h4>
 
 <br></br>
 
@@ -15,12 +16,8 @@
   <%= flight.name %><br>
   <%= link_to flight.destination, flight_path(flight) %><br>
 
-    Notes:<% flight.bookings.each do |b| %>
-
-      <% if b.paid == "0" %>
-        <%= "***PAYMENT REQUIRED***"%>
-      <% end %>
-      <%= b.description %>
-    <% end %><br></br>
+    <% flight.bookings.where(:paid => 0).each do |b| %>
+      <%= "**PAYMENT REQUIRED**" %>
+      <% end %><br></br>
   <% end %><br>
-<% end %>
+<% end %><br>
