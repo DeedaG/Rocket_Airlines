@@ -30,7 +30,6 @@ class UsersController < ApplicationController
   def show
     if logged_in?
       @user = User.find(params[:id])
-      #@user.flights << Flight.find(flight_id)
     else
       redirect_to 'about'
     end
