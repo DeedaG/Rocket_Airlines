@@ -1,12 +1,19 @@
 <%= render 'navbar' %>
 
-<h3><%= @booking.user.name %>'s Booking Details</h3><br>
-Flight number: <%= @booking.flight.name %><br>
-Destination: <%= @booking.flight.destination %><br>
-Itinerary: <%= @booking.description %><br>
-Date Booked: <%= @booking.created_at %><br>
-Balance: <% if @booking.paid == 1 %>
-  <%= "Paid"%>
-  <% else %>
-  <%= "payment due" %>
-  <% end %><br></br>
+
+<% current_user.bookings.each do |booking| %>
+
+
+  <h3>Confirmation</h3><br>
+
+  Passenger: <%= booking.user.name %><br>
+  Flight number: <%= booking.flight.name %><br>
+  Destination: <%= booking.flight.destination %><br>
+  Itinerary: <%= booking.description %><br>
+  Date Booked: <%= booking.created_at %><br>
+  Balance: <% if booking.paid == 1 %>
+    <%= "Paid"%>
+    <% else %>
+    <%= "payment due" %>
+    <% end %><br></br>
+  <% end %><br>

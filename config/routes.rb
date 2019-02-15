@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   end
 
   resources :flights do
-    resources :bookings, only: [:new]
+    resources :bookings, only: [:show, :index, :new]
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 

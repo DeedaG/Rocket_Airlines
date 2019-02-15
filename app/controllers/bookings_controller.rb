@@ -17,12 +17,10 @@ class BookingsController < ApplicationController
     @flight = Flight.find(params[:booking][:flight])
     @booking = @flight.bookings.create(booking_params.merge(user_id: current_user.id))
      #binding.pry
-    #@user.bookings << @booking
     redirect_to user_path(@booking.user_id)
   end
 
   def show
-    #binding.pry
     @booking = Booking.find_by(params[:id])
   end
 

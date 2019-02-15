@@ -1,7 +1,18 @@
   <%= render 'navbar' %>
 
-  <h2><%= current_user.name%>'s Booking Flights<% @bookings.each do |booking| %></h2>
-  Passenger: <%= link_to "#{booking.user.name}'s Confirmation", booking_path(booking.user_id) %>
-  Flight: <%= booking.flight.name %><br>
+<% if current_user.admin == "1" %>
+  <%= "**ADMIN***" %>
 
+  <% @bookings.each do |booking| %>
+    Flight: <%= booking.flight.name %><br>
   <% end %><br></br>
+
+<% else %>
+
+  <h2><%= current_user.name%>'s Booked Flights</h2>
+
+  <% current_user.bookings.each do |booking| %>
+  Flight: <%= booking.flight.name %>
+    <%= link_to "Confirmation", flight_booking_path(booking.flight_id, booking) %><br>
+    <% end %><br>
+<% end %>
