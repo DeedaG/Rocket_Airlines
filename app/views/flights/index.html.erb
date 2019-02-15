@@ -1,8 +1,7 @@
 <%= render 'navbar' %>
 
 <h2>All Flights</h2>
-
-<% if current_user.admin == "0" %>
+<% if current_user.admin == "0" || current_user.admin == nil %>
 
     <% @flights.each do |flight| %>
     <%= link_to "Go to #{flight.destination}", flight_path(flight) %><br>
