@@ -10,7 +10,7 @@ Passengers Booked on this flight: <%= @flight.users.count %><br></br>
 <% else %>
 
   <%= link_to "See All Flights", flights_path %><br>
-  <% if current_user.admin == "0" %>
+  <% if current_user.admin == "0" || current_user.admin == nil %>
     <%= link_to "Book this Flight", new_flight_booking_path(@flight.id) %><br>
   <% end %>
 <% end %>
