@@ -10,10 +10,11 @@ class BookingsController < ApplicationController
   end
 
   def new
-    @booking = Booking.new(params[:id])
+      @booking = Booking.new
   end
 
   def create
+    @user = current_user
     @flight = Flight.find(params[:booking][:flight])
     @booking = @flight.bookings.create(booking_params.merge(user_id: current_user.id))
      #binding.pry
@@ -21,7 +22,9 @@ class BookingsController < ApplicationController
   end
 
   def show
-    @booking = Booking.find_by(params[:id])
+    @booking = Booking.find(params[:id])
+    @bookings = current_user.bookings
+    #raise params.inspect
   end
 
   private
