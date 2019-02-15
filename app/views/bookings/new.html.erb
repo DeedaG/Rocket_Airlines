@@ -6,6 +6,8 @@
     <%= f.label "Paid?"%>
     <%= f.check_box :paid %>
 
+    <%= f.hidden_field :user_id %>
+
     <%= f.hidden_field :flight, value: params['flight_id'] %>
 
     <%= f.submit %>
