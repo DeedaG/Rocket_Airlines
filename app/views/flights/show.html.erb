@@ -5,6 +5,7 @@ Flight Number: <%= @flight.name %><br>
 Destination: <%= @flight.destination %><br>
 Passengers Booked on this flight: <%= @flight.users.count %><br></br>
 
+
 <% if @flight.users.count > 20 %>
   <h1><%= "This flight is FULL!" %>"</h1>
 <% else %>
