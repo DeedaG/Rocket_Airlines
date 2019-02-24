@@ -1,3 +1,5 @@
+
+
   <%= form_for @booking do |f| %>
 
     <%= f.label "Notes" %>
@@ -6,9 +8,7 @@
     <%= f.label "Paid?"%>
     <%= f.check_box :paid %>
 
-    <%= f.hidden_field :user_id %>
-
-    <%= f.hidden_field :flight, value: params['flight_id'] %>
+    <%= f.hidden_field :flight_id, value: params['flight_id'] %>
 
     <%= f.submit %>
   <% end %>
