@@ -13,10 +13,16 @@ class BookingsController < ApplicationController
       @booking = Booking.new
   end
 
+  def notpaid
+    @bookings = current_user.bookings
+  end
+
   def create
     @user = current_user
-    @flight = Flight.find(params[:booking][:flight])
-    @booking = @flight.bookings.create(booking_params.merge(user_id: current_user.id))
+    #@flight = Flight.find(params[:booking][:flight])
+    @booking = current_user.bookings.create(booking_params)
+    #raise params.inspect
+    #@booking = @flight.bookings.create(booking_params.merge(user_id: current_user.id))
      #binding.pry
     redirect_to user_path(@booking.user_id)
   end
@@ -29,7 +35,7 @@ class BookingsController < ApplicationController
 
   private
   def booking_params
-    params.require(:booking).permit(:description, :paid, :user_id, :flight_id)
+    params.require(:booking).permit(:description, :paid, :flight_id)
   end
 
 end
