@@ -10,6 +10,8 @@ Rails.application.routes.draw do
     get '/sessions/destroy' => 'sessions#destroy'
     post '/signin' => 'sessions#create'
 
+    get '/bookings/notpaid' => 'bookings#notpaid'
+
 
   resources :users
   resources :bookings
